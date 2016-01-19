@@ -9,11 +9,13 @@ public class CharacterFinal : MonoBehaviour
 	public float jumpForce = 5.0f;			// Amount of force added when the player jumps.
 	private bool grounded = false;			// Whether or not the player is grounded.
 	public int movementSpeed = 100;			// The vertical speed of the movement
-	private Animator anim;					// The animator that controls the characters animations
+	private Animator anim;                  // The animator that controls the characters animations
+	Rigidbody2D _rigidbody;
 
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
+		_rigidbody = GetComponent<Rigidbody2D>();
         transform.localScale = new Vector3(1, 1, 1);
         Physics2D.gravity = new Vector2(0f, -Mathf.Abs(Physics2D.gravity.y));
 	}
@@ -56,7 +58,7 @@ public class CharacterFinal : MonoBehaviour
 	void FixedUpdate ()
 	{
 		//if died that 
-		rigidbody2D.velocity = new Vector2(0f, rigidbody2D.velocity.y );
+		_rigidbody.velocity = new Vector2(0f, _rigidbody.velocity.y );
 		//else
 		//moving
 		

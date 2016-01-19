@@ -48,14 +48,14 @@ public class CharacterStart : MonoBehaviour
 		// If the character started moving, we move him forward
 		if (startedMovement == true) 
 		{
-			rigidbody2D.velocity = new Vector2(movementSpeed, rigidbody2D.velocity.y );
+			GetComponent<Rigidbody2D>().velocity = new Vector2(movementSpeed, GetComponent<Rigidbody2D>().velocity.y );
 		}
 
 		// If jump is set to true we add a quick force impulse for the jump
 		if(jump == true)
 		{
 			// Add a vertical force to the player.
-			rigidbody2D.AddForce(new Vector2(0f, jumpForce),ForceMode2D.Impulse);
+			GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce),ForceMode2D.Impulse);
 
 			// We set the variable to false again to avoid adding force constantly
 			jump = false;

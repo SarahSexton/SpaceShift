@@ -29,13 +29,13 @@ public class Respawn : MonoBehaviour
         foreach( ScrollinLevelChunk chunk in GameObject.FindObjectsOfType<ScrollinLevelChunk>() )
         {
             chunk.bReady = false;
-            chunk.rigidbody2D.velocity = Vector3.zero;
+            chunk.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
 
         yield return new WaitForSeconds( 0.5f ); //this is the line that makes the wait happen
         //Destroy(gameObject);
         
         Application.LoadLevel("endmenu");
-        rigidbody2D.velocity = Vector3.zero;
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
 }

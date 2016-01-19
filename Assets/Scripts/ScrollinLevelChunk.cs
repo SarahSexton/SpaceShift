@@ -11,7 +11,7 @@ public class ScrollinLevelChunk : MonoBehaviour {
     {
         if (bReady)
         {
-            rigidbody2D.velocity = new Vector2(movementSpeed, rigidbody2D.velocity.y);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(movementSpeed, GetComponent<Rigidbody2D>().velocity.y);
         }
 
         //call game manager to disable and add back to resource pool which is disabledChunks
