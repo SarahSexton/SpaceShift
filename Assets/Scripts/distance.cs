@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
-public class distance : MonoBehaviour {
-
+public class Distance : MonoBehaviour
+{
 	public Text metersText;
-	public Text metersFinal;
-    public float meters;
+	//public Text metersFinal;
     public float distanceIncrement = 5;
+
+	public float meters;
 
 	// Update is called once per frame
 	void Update () {
