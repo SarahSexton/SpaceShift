@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
 	[SerializeField] Text scoreText;
 	[SerializeField] Text distanceText;
+	[SerializeField] Text gameOverScoreText;
+	[SerializeField] Text gameOverDistanceText;
 	[SerializeField] float distanceIncrement = 5;
 	[SerializeField] float deathDelay = 2f;
+	[SerializeField] GameObject gameOverUI;
 
 	bool isRunning = false;
 	float score;
@@ -47,7 +49,7 @@ public class ScoreManager : MonoBehaviour
 		//score
 		float oldScore = PlayerPrefs.GetFloat("Cans");
 		if (score > oldScore)
-			PlayerPrefs.SetFloat("Cans", score); 
+			PlayerPrefs.SetFloat("Cans", score);
 
 		//meters
 		float oldDistance = PlayerPrefs.GetFloat("Distance");
@@ -56,11 +58,14 @@ public class ScoreManager : MonoBehaviour
 
 		PlayerPrefs.Save();
 
-		Invoke("LoadMenu", deathDelay);
+		Invoke("ShowGameOverUI", deathDelay);
 	}
 
-	void LoadMenu()
+	void ShowGameOverUI()
 	{
-		SceneManager.LoadScene("EndMenu");
+		gameOverDistanceText.text = meters.ToString("F2") + " M";
+		gameOverScoreText.text = score.ToString();
+
+		gameOverUI.SetActive(true);
 	}
 }

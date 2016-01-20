@@ -24,7 +24,7 @@ public class PlayerState : MonoBehaviour
 		}
         
         // If the player collided with a laser
-        if(col.gameObject.tag == "Laser")
+        if(col.tag == "Laser" || col.tag == "OutOfBounds")
         {
 			anim.SetTrigger("Shock");
 			scoreManager.PlayerDied();
